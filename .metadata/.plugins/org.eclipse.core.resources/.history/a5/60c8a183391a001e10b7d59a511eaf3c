@@ -1,0 +1,1112 @@
+package Java8_CloudTech;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.Random;
+import java.util.Set;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Java8 {
+public static void main(String[] args) {
+	/*
+	 * each method represents a video
+	 * @stream_5() <- Num at end represents video number in 
+	 * here 5 is video number in youtube
+	 */
+	
+	
+	     /* increase employee 10% sal by age */
+	//streams_5_1();
+	
+	  /* string comparisions */
+	//streams_5_2();
+	
+	/* retrieve hashmap values in a sorted order 
+	 we use linkedhashmap to get in an order
+	 because hashmap does not follow order
+	 */
+	//streams_6();
+	
+		/* groupBy all employees names by city  */
+	//stream_8();
+	
+		/* find number is arstrong or not */
+	//stream_9();
+	
+		/* print 1-100 without numbers */
+	//_11_stream();
+	
+		/* find duplicate nums using java7 & java8 */
+	//_12_stream();
+	
+		/* find highest and lowest number from list */
+	//_14_stream();
+	
+		/* print randoms numbers 1-100 */
+	//_15_stream();
+	
+		/* find a num which starts with 1 from list */
+	//_17_1_stream();
+	
+		/* reverse a Integer num */
+	//_17_2_stream();
+	
+		/* groupBy List of All emps by Dept */
+	//_18_1_stream();
+	
+		/* parallelStream and Sequential Stream */
+	//_18_2_stream();
+	
+		/* emp distinct by dept and count by dept and Averaging */
+	//_19_stream();
+	
+		/* corona patints filter  */
+	//_20_stream();
+	
+		/* print even nums from list  */
+	//_21_stream();
+	
+		// string joiner */
+	//_23_stream();
+	
+		// intersection of 2 arr
+	//_23_2_stream();
+	
+		// find special char
+	//_24_stream();
+	
+		// find rotation of str
+	//_24_2_stream();
+	
+		// find missing num 
+	//_25_stream();
+	
+		// str fir half should be lower , second half should be upper case
+	//_25_2_stream();
+	
+		//	find len of Integer type
+	//_26_stream();
+	
+		// remove ch from given str
+	//_27_stream();
+	
+		// find 2 arr are equal
+	//_27_2_stream();
+	
+		// even nums at fir and odd nums at last
+	//_28_stream();
+	
+		// custom linkedlist data structure 
+	//_29_stream();
+	
+		// create Singleton class
+	//_30_stream();
+	
+		// custom stack data structure
+	//_31_stream();
+	
+		// custom que data structure
+	//_32_stream();
+	
+		// binary search
+	//_33_stream();
+	
+		// find first char should be same as last char
+	//_34_stream();
+	
+		// count num of 0s and 1s 
+	//_34_2_stream();
+	
+		// add sum of list to each ele in list
+	//_35_stream();
+	
+		// convert countrys to upper case and searate with ','
+	//_35_2_stream();
+	
+		// find num of sub arra sums that sums upto k int 
+	//_36_stream();
+	
+		// minimum distance between 2 words
+	//_37_stream();
+	
+		// map and filter and averaging list of Integers 
+	//_39_stream();
+	
+		// stream concat with unique integers and find min and max
+	//_40_stream();
+	
+		// total characters in string without space  & , 
+	//_41_stream();
+	
+		// swap 2 nums without 3rd var using addition & multiplication method
+	//_43_stream();
+	
+		// swap 2 strings without third var
+	//_44_stream();
+	
+		// find largest number 
+	//_46_stream();
+	
+		// merge 2 arrays in sorted 
+	//_47_stream();
+	
+		// separate pos and neg ele from array
+	//_48_stream();
+	
+	_49_stream();
+	
+	
+}
+
+private static void _49_stream() {
+	// TODO Auto-generated method stub
+	List<Product> products = Arrays.asList(new Product(101, 150,"java", "books"),
+			new Product(101, 150,"java", "books"),
+			new Product(102, 100,"spring", "books"),
+			new Product(103, 140,"html", "books"),
+			new Product(104, 130,"css", "books"),
+			
+			new Product(105, 180,"nokia", "phone"),
+			new Product(101, 150,"samsung", "phone"),
+			new Product(101, 150,"lenovo", "phone"));
+	
+	products.stream().filter(p -> p.getCategory().equalsIgnoreCase("books"))
+		.filter(p -> p.getPrice()>150)
+		.collect(Collectors.toList())
+		.forEach(System.out::println);
+}
+
+private static void _48_stream() {
+	// TODO Auto-generated method stub
+	int arr[] ={10,-2,-30,4,-8,40,-20,3,-46};
+	
+	int positivenumarrays[] = new int[10];
+	int negativenumarrays[] = new int[10];
+	
+	int positivenumarrayscount =0;
+	int negativenumarrayscount =0;
+	
+	for(int i=0;i<arr.length;i++) {
+		if(arr[i]<0) {
+			negativenumarrays[negativenumarrayscount]=arr[i];
+			negativenumarrayscount++;
+		}else {
+			positivenumarrays[positivenumarrayscount]=arr[i];
+			positivenumarrayscount++;
+		}
+	}
+	System.out.println("total pos count :"+positivenumarrayscount);
+	System.out.println("total pos count :"+negativenumarrayscount);
+	
+	for(int i= 0;i<negativenumarrayscount;i++) {
+		System.out.println(negativenumarrays[i]);
+	}
+	System.out.println("pos arr");
+	for(int i= 0;i<positivenumarrayscount;i++) {
+		System.out.println(positivenumarrays[i]);
+	}
+	
+}
+
+private static void _47_stream() {
+	// TODO Auto-generated method stub
+	int arr[] ={10,2,30,4,8,40};
+	int arr2[] ={2,20,3,46,81,0};
+	
+	int finalarr[] = new int[arr.length+arr2.length];
+	
+	System.arraycopy(arr, 0, finalarr, 0, arr.length);
+	System.arraycopy(arr2, 0, finalarr, arr.length, arr2.length);
+	
+	Arrays.sort(finalarr);
+	System.out.println("after merged and sorted :");
+	for(int ele : finalarr) {
+		System.out.println(ele);
+	}
+}
+
+private static void _46_stream() {
+	// TODO Auto-generated method stub
+	int arr[] = {10,20,30,40,50};
+	int largestnum;
+	
+	int n=arr.length;
+	largestnum = arr[0];
+	for(int i=0; i<n;i++) {
+		if(largestnum <arr[i]) {
+			largestnum = arr[i];
+		}
+	}
+	System.out.println("largestnum is :"+largestnum);
+}
+
+private static void _44_stream() {
+	// TODO Auto-generated method stub
+	String str1 = "cloud";
+	String str2 = "tech";
+	
+	System.out.println("before swapping str1 :" +  str1);
+	System.out.println("before swapping str2 :" +str2);
+	
+	str1 = str1+str2;
+	str2 = str1.substring(0,(str1.length() - str2.length()));
+	str1 = str1.substring(str2.length());
+	
+	System.out.println("after swapping str1 :" +  str1);
+	System.out.println("after swapping str2 :" +str2);
+}
+
+private static void _43_stream() {
+	// TODO Auto-generated method stub
+	int a=10;
+	int b=20;
+	// using addition method
+	a = a+b; // 30
+	b= a-b; // 30-20
+	a= a-b; // 30-10
+	
+	
+	System.out.println("using addition method : ");
+	System.out.println("after swapping a "+ a);
+	System.out.println("after swapping b "+ b);
+	
+	// using multiplication method
+	// only possible values should not be 0
+	a = a*b; // 200
+	b= a/b; // 200/20=10
+	a= a/b; // 200/10=20
+	System.out.println("using multiplication method : ");
+	System.out.println("after swapping a "+ a);
+	System.out.println("after swapping b "+ b);
+}
+
+private static void _41_stream() {
+	// TODO Auto-generated method stub
+	String s ="ab, cd, xyz";
+	
+	int count = 0;
+	for(int i=0;i<s.length();i++) {
+		if(s.charAt(i) != ' ' && s.charAt(i) != ',') {
+			count++;
+		}
+	}
+	System.out.println("total characters in string without space & , : "+count);
+}
+
+private static void _40_stream() {
+	// TODO Auto-generated method stub
+	List<Integer> list1 = Arrays.asList(1,6,3,30,2,9,2);
+	List<Integer> lst2 = Arrays.asList(4,5,7,30,2,8,10);
+	
+	Stream<Integer> fulllist = Stream.concat(list1.stream(), lst2.stream());
+	System.out.println("after concat : ");
+	List<Integer> afterconcat = fulllist.collect(Collectors.toList());
+	System.out.println(afterconcat);
+	System.out.println("unique ele");
+	Set<Integer> uniqueAfterConcat = afterconcat.stream().collect(Collectors.toSet());
+	System.out.println(uniqueAfterConcat);
+	System.out.println("max : ");
+	Integer max = uniqueAfterConcat.stream().max((x1,x2) -> x1 - x2).get();
+	System.out.println(max);
+	System.out.println("min :");
+	Integer min = uniqueAfterConcat.stream().min((x1,x2) -> x1 - x2).get();
+	System.out.println(min);
+	
+}
+
+private static void _39_stream() {
+	// TODO Auto-generated method stub
+	List<Integer> nums = Arrays.asList(4,6,3,30,2,9,2);
+	
+	
+	OptionalDouble opt = nums.stream().mapToInt(x -> x*x).filter(n -> n >=100).average();
+/*	System.out.println("average :" +opt.getAsDouble());
+	if no ele then java.util.NoSuchElementException occurs
+	*/
+	if(opt.isPresent()) {
+		System.out.println("average :" +opt.getAsDouble());
+	}else System.out.println("no qualifying ele" ); 
+}
+
+private static void _37_stream() {
+	// TODO Auto-generated method stub
+	String s ="use cloudtech for learning java";
+	String w1= "cloudtech";
+	String w2 ="learning";
+	System.out.println("min distance between two words : "+distance(s,w1,w2));
+	
+}
+
+private static int distance(String s,String w1, String w2) {
+	// TODO Auto-generated method stub
+	if(w1.equals(w2)) {
+		return 0;
+	}
+	String[] words = s.split(" ");
+	int minDist = words.length +1;
+	
+	for(int idx=0;idx < words.length;idx++) {
+		if(words[idx].equals(w1)) {
+			for(int search =0; search <words.length;search++) {
+				if(words[search].equals(w2)) {
+					int currDist = Math.abs(idx -search);
+					
+					if(currDist <minDist) {
+						minDist = currDist;
+					}
+				}
+			}
+		}
+	}
+	return minDist;
+	
+}
+
+private static void _36_stream() {
+	// TODO Auto-generated method stub
+	int arr[] = {1,2,3};
+	int k =3;
+	int len = arr.length;
+	int res =0;
+	for(int i =0;i<len;i++) {
+		int sum =0;
+		for(int j=i;j<len;j++) {
+			sum = sum+arr[j];
+			if(sum == k) {
+				res++;
+			}
+		}
+	}
+	
+	System.out.println("num of sub arr sums upto k is :"+res);
+}
+
+private static void _35_2_stream() {
+	// TODO Auto-generated method stub
+	List<String> countries = Arrays.asList("usa","japan","germany","italy","india","canada");
+	
+	String str = countries.stream().map(x -> x.toUpperCase())
+			.collect(Collectors.joining(","));
+	
+	System.out.println(str);
+}
+
+private static void _35_stream() {
+	// TODO Auto-generated method stub
+	List<Integer> nums = Arrays.asList(10,20,30,40,50);
+	Integer sum = nums.stream().reduce(0, Integer::sum);
+	
+	List<Integer> transformedNums = nums.stream().map(x -> x+sum ).collect(Collectors.toList());
+	System.out.println(transformedNums);
+}
+
+private static void _34_2_stream() {
+	// TODO Auto-generated method stub
+	List<Integer> nums = Arrays.asList(1,0,0,1,1,0,0,1,0,1,0,1,1);
+	Integer sum = nums.stream().reduce(0, Integer::sum);
+	
+	System.out.println("num of 1s are :"+ sum);
+	System.out.println("num of 0s are :"+ (nums.size()-sum));
+}
+
+private static void _34_stream() {
+	// TODO Auto-generated method stub
+	List<String> strs = Arrays.asList("ab","aba","xyx","mno","xyz","pop");
+	strs.stream().filter(x -> x.length() > 0 &&
+			x.endsWith(String.valueOf(x.charAt(0))))
+	.forEach(System.out::println);
+}
+
+private static void _33_stream() {
+	// TODO Auto-generated method stub
+	int arr[] = {10,20,30,40,50};
+	int key =50;
+	int las = arr.length-1;
+	//int fir = 0;
+	binarysearch(arr, 0, las, key);
+}
+
+private static void binarysearch(int[] arr , int fir, int las, int key) {
+	// TODO Auto-generated method stub
+	while (fir <= las) {
+		int mid = (fir +las) / 2;
+		
+		if(arr[mid] < key) {
+			fir = mid +1;
+			
+		}
+		else if(arr[mid] == key) {
+			System.out.println("ele found at "+mid);
+			break;
+		}else {
+			las = mid - 1;
+		}
+	}
+	if(fir > las) {
+		System.out.println("ele not found ");
+	}
+}
+
+private static void _32_stream() {
+	// TODO Auto-generated method stub
+	Queue que = new Queue(5);
+	
+	que.enqueue(1);
+	que.enqueue(2);
+	que.enqueue(3);
+	que.enqueue(4);
+	
+	System.out.println("size of que "+ que.size());
+	System.out.println("element at front "+que.peek());
+	
+	que.dequeue();
+	que.dequeue();
+	
+	System.out.println("size of que "+ que.size());
+	System.out.println("element at front "+que.peek());
+	
+}
+
+private static void _31_stream() {
+	// TODO Auto-generated method stub
+	
+	Stack stack = new Stack(5);
+	stack.push(4);
+	stack.push(5);
+	stack.push(3);
+	stack.push(2);
+	stack.push(1);
+	
+	stack.pop();
+	stack.pop();
+	stack.pop();
+	stack.pop();
+	stack.pop();stack.pop();
+	
+	stack.print();
+	System.out.println("curr ele in stack :"+stack.peek());
+
+	
+}
+
+private static void _30_stream() {
+	// TODO Auto-generated method stub
+	Singleton s1 = Singleton.getInstance();
+	
+	Singleton s2 = Singleton.getInstance();
+	
+	if(s1==s2) System.out.println("singleton object");
+	else System.out.println("not a singleton object");
+	
+}
+
+private static void _29_stream() {
+	// TODO Auto-generated method stub
+	
+	MyLinkedList list = new MyLinkedList();
+	
+	MyLinkedList.insert(list,1);
+	MyLinkedList.insert(list,2);
+	MyLinkedList.insert(list,3);
+	
+	MyLinkedList.printlist(list);
+}
+
+private static void _28_stream() {
+	// TODO Auto-generated method stub
+	int arr[]= {1,2,4,6,45,13,20};
+	int index=0;
+	
+	int arr2[] =new int[arr.length];
+	for(int i =0; i<arr.length;i++) {
+		if(arr[i]%2==0) {
+			arr2[index] = arr[i];
+			index++;
+		}
+	}
+	for(int i =0; i<arr.length;i++) {
+		if(arr[i]%2!=0) {
+			arr2[index] = arr[i];
+			index++;
+		}
+	}
+	for(int i =0; i<arr.length;i++) {
+		System.out.print(arr2[i]+" ,");
+	}
+}
+
+private static void _27_2_stream() {
+	// TODO Auto-generated method stub
+	
+
+	int arr[]= {2,3,1,4};
+	int arr2[]= {1,3,2,4};
+	
+	if(areEqual(arr,arr2)) {
+		System.out.println("2 arr are equal");
+	}
+	else System.out.println("2 arr's are not equal");
+	
+	
+}
+
+private static boolean areEqual(int[] arr, int[] arr2) {
+	// TODO Auto-generated method stub
+	int n = arr.length;
+	int m = arr2.length;
+	
+	if(n!=m) {return false;};
+		
+	Arrays.sort(arr);
+	Arrays.sort(arr2);
+	
+	for(int i =0; i<n;i++) {
+		if(n !=m && arr[i]!=arr2[i]) {
+			return false;
+		}
+	}
+		return true;
+}
+
+private static void _27_stream() {
+	// TODO Auto-generated method stub
+	String str ="CloudTeCh";
+	
+	/* inbuild method to replace str 
+	 System.out.println(str.replaceAll("C", ""));
+	*/
+	char ch ='C';
+	int n = str.length();
+	String finalstring="";
+	for(int i =0;i<n;i++) {
+		if(str.charAt(i)!='C') {
+			finalstring=finalstring+str.charAt(i);
+		}
+	}
+	System.out.println("str without C: "+finalstring);
+}
+
+private static void _26_stream() {
+	// TODO Auto-generated method stub
+	
+	int i = 123456;
+	
+	/*	convert to str and find len of Integer
+	String str = Integer.toString(i);
+	System.out.println(str.length());
+	*/
+	
+	int count = 0;
+	while(i>0) {
+		count++;
+		i = i/10;
+	}
+	System.out.println(count);
+}
+
+private static void _25_2_stream() {
+	// TODO Auto-generated method stub
+	String str = "this is cloudTech this is cloudtech";
+	
+	int mid = str.length()/2;
+	String lowercase ="";
+	String uppercase ="";
+	
+	for(int i=0; i<str.length();i++) {
+		if(i<mid) {
+			lowercase = lowercase + Character.toLowerCase(str.charAt(i));
+		}else
+			uppercase = uppercase + Character.toUpperCase(str.charAt(i));
+	}
+	System.out.println(lowercase+uppercase);
+}
+
+private static void _25_stream() {
+	// TODO Auto-generated method stub
+	int arr[] = new int[] {1,2,4,5,6,7,8,9,10};
+	
+	int sum = (10*11)/2;
+	
+	int actualsum = 0;
+	
+	for(int i =0; i<arr.length;i++) {
+		actualsum = actualsum +arr[i];
+	}
+	System.out.println("missing num is : "+(sum-actualsum));
+}
+
+private static void _24_2_stream() {
+	// TODO Auto-generated method stub
+	
+	String str ="abcd";
+	String str2 ="cdab";
+	
+	if(_24_isRotation(str,str2))	System.out.println("rotation of str is present");
+	else 	System.out.println("rotation of str is not present");
+}
+
+private static boolean _24_isRotation(String str, String str2) {
+	// TODO Auto-generated method stub
+	return (str.length()==str2.length()) && (str + str2).indexOf(str2) != -1;
+}
+
+private static void _24_stream() {
+	// find special char
+	
+	String s="cloudtech@!";
+	int count=0;
+	String withoutSpecialChar="";
+	for( int i =0; i<s.length();i++) {
+		if(!Character.isDigit(s.charAt(i)) && !Character.isAlphabetic(s.charAt(i))
+			&& !Character.isWhitespace(s.charAt(i))){
+			count++;
+		}else {
+			withoutSpecialChar = withoutSpecialChar + s.charAt(i);
+		}
+	 }
+	if(count==0) System.out.println("no special char");
+	else System.out.println("without Special Char :"+withoutSpecialChar);
+}
+
+private static void _23_2_stream() {
+	// intersection and union of 2 arr
+	
+	int arr[]= {20,30,50,60,30,60,80};
+	int arr2[]= {10,40,54,65,30,60,80};
+	
+	Set<Integer> hs = new HashSet<>();
+	
+	// intersection of 2 arr
+	for (int i =0; i<arr.length;i++) {
+		hs.add(arr[i]);
+	}
+	System.out.println("duplicate ele: ");
+	for (int i =0; i<arr2.length;i++) {
+		//System.out.println("duplicate ele: ");
+		if(hs.contains(arr2[i])) {
+			System.out.println(arr2[i]);
+		}
+	}
+	
+	// union of 2 arr's
+	for (int i =0; i<arr2.length;i++) {
+		hs.add(arr2[i]);
+	}
+	System.out.println("union of 2 arr's : "+hs);
+		
+	
+}
+
+private static void _23_stream() {
+	
+	// string joiner */
+	
+	StringJoiner st = new StringJoiner(",","[","]");// "[" <-prefixes "]" <-suffixes
+	
+	st.add("a");st.add("b");st.add("c");
+	 System.out.println(st);
+	 
+	StringJoiner st2 = new StringJoiner(":");
+	st2.add("p");st2.add("q");st2.add("r");
+	System.out.println(st2);
+	
+	st.merge(st2);
+	
+	System.out.println(st);
+}
+
+private static void _21_stream() {
+	/* print even nums from list  */
+	
+	List<Integer> nums = Arrays.asList(10,21,21,30,40,30,40,60);
+	
+	System.out.println("---even values---");
+	// even nums
+	nums.stream().filter(n -> n%2==0).forEach(System.out::println);
+	
+	// find duplicates
+	Set<Integer> hs = new HashSet<>();
+	System.out.println("---duplicate values---");
+	nums.stream().filter(n -> !hs.add(n)).forEach(System.out::println);
+	System.out.println("descending order");
+	nums.stream().sorted(Collections.reverseOrder()).forEach(System.out::println);
+}
+
+private static void _20_stream() {
+	/* corona patints filter  */
+	
+	List<Patient> pnts = Arrays.asList(
+			new Patient("p1", 24, "corona", 2500),
+			new Patient("p2", 26, "fewer", 2400),
+			new Patient("p3", 29, "corona", 2560),
+			new Patient("p4", 25, "corona", 2700));
+	System.out.println("filter patients by corona :");
+	// filter patients by corona and age 
+	pnts.stream().filter(p -> p.getDisease().equals("corona") && p.getAge() <= 25)
+		.forEach(System.out::println);
+	
+	// avg bill paid by corona patient
+	Double avgBillPid = pnts.stream().filter(p -> p.getDisease().equals("corona")).collect(Collectors.averagingInt(Patient::getAmt));
+	
+	System.out.println("avg bill paid : "+avgBillPid);
+}
+
+private static void _19_stream() {
+	/* emp distinct by dept and count by dept */
+	List<Employee> emps = Arrays.asList(
+			new Employee("a",24,10009,"hyd","HR","male"),
+			new Employee("a",27,100666,"hyd","cse","male"),
+			new Employee("a",20,167890,"hyd","HR","female"),
+			new Employee("a",39,476538,"hyd","IT","female"));
+	
+	// emp distinct by dept
+	emps.stream().map(e -> e.getDept()).distinct().forEach(System.out::println);
+	
+	//  emp count by dept
+	Map<String , Long> countByDept = emps.stream().collect(Collectors.groupingBy(Employee::getDept,Collectors.counting()));
+	System.out.println(countByDept);
+	
+	// emp avg by gender 
+	Map<String,Double> avgByAge = emps.stream().collect(Collectors.groupingBy(Employee::getDept,Collectors.averagingInt(Employee::getAge)));
+	System.out.println(avgByAge);
+}
+
+private static void _18_2_stream() {
+	/* parallelStream and Sequential Stream */
+	
+	List<Integer> nums = Arrays.asList(10,20,30,40);
+	
+	// sequential stream
+	nums.stream().forEach(e -> {
+		System.out.println(e + " " + Thread.currentThread().getName());
+	});
+	 System.out.println();
+	// parallel stream
+	nums.parallelStream().forEach(e -> {
+		System.out.println(e + " " + Thread.currentThread().getName());
+	});
+	
+}
+
+private static void _18_1_stream() {
+	/* groupBy List of All emps by Dept */
+	
+	List<Employee> emps = Arrays.asList(
+			new Employee("a",24,10009,"hyd","IT","male"),
+			new Employee("a",27,100666,"hyd","cse","male"),
+			new Employee("a",20,167890,"hyd","cse","male"),
+			new Employee("a",39,476538,"hyd","IT","male"));
+	
+	/* groupBy List of All emps by Dept */
+	Map<String, List<Employee>> groupByDept = emps.stream().
+			collect(Collectors.groupingBy(e->e.getDept()));
+	System.out.println();
+	
+	/* groupBy List of All emps by Dept by max sal */
+	Map<String, Employee> groupByDeptBymax = emps.stream().
+			collect(Collectors.groupingBy(e->e.getDept(),Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(e -> e.getSalary())), Optional::get)));
+	
+	System.out.println(groupByDept);
+	System.out.println(groupByDeptBymax);
+}
+
+private static void _17_2_stream() {
+	
+	/* reverse a Integer num */
+	int num = 2345;
+	
+	int reverse=0;
+	
+	/*
+	StringBuilder str = new StringBuilder(String.valueOf(num));
+	reverse = Integer.valueOf(str.reverse().toString());
+	
+	System.out.println("reverse number is :"+reverse);
+	*/
+	
+	int rem=0;
+	System.out.println("actual num : "+num);
+	while (num>0) {
+		rem = num % 10;
+		num = num / 10;
+		reverse = reverse * 10 + rem;
+	}
+	
+	System.out.println("reversed num : "+reverse);
+}
+
+private static void _17_1_stream() {
+	
+	/* find a num which starts with 1 from list */
+	List<Integer> nums = Arrays.asList(10,20,30,13,40,16);
+	
+	nums.stream().map(s -> s+"").filter(s-> s.startsWith("1")).forEach(System.out::println);
+	
+}
+
+private static void _15_stream() {
+	/* print randoms numbers 1-100 */
+	Random rand = new Random();
+	
+		// generate unlimited
+	//rand.ints().forEach(System.out::println); 
+	
+		// generates limited numbers
+	//rand.ints(100).forEach(System.out::println);
+	//rand.ints().limit(100).forEach(System.out::println);
+	rand.ints().limit(100).sorted().forEach(System.out::println);
+	
+		// generates limited nums from fixed bounds
+	//rand.ints(100,100,200).forEach(System.out::println);
+	
+	
+}
+
+private static void _14_stream() {
+	/* max & min num from list */
+	List<Integer> numbers =Arrays.asList(10,20,30,40,60,30);
+	
+	Optional<Integer> max = numbers.stream().max((i,j) -> i.compareTo(j));
+	System.out.println("highest num from list is : "+ max.get());
+	
+	/* 
+	 * get() is from optional class it gives its Generic value
+	 * max() return type is Optional<Integer>
+	 *  */
+	
+	Integer min = numbers.stream().min((i,j) -> i.compareTo(j)).get();
+	System.out.println("lowest num from list is : "+ min);
+}
+
+private static void _12_stream() {
+	
+	/* get all duplicate nums from list */
+	
+	List<Integer> numbers = Arrays.asList(10,20,20,40,10,50,60,70);
+	Set<Integer> unique = new HashSet<>();
+	System.out.println("duplicate numbers :");
+	// java 7 approch
+	/*
+	for (Integer number : numbers) {
+		if(!unique.add(number)) System.out.println(number);
+	}*/
+	// java 8 appro
+	numbers.stream().filter(num -> !unique.add(num)).forEach(System.out::println);
+}
+
+private static void _11_stream() {
+	
+	
+	/* print 1-100 ele without using Integers */
+	int one = 'a'/'a';
+	/*
+	int ten = "8888888888".length();
+
+	for(int i=one;i<=(ten*ten);i++) {
+		System.out.println(i);
+	}
+	*/
+	int hund ='d';
+	for(int i=one;i<=hund;i++) {
+		System.out.println(i);
+	}
+}
+
+private static void stream_9() {
+	/* find armstrong or not */
+	
+	int input = 306;
+	if(_9_isarmstrong(input)) {
+		System.out.println(input+" number is armstrong ");
+	}else {
+		System.out.println(input+" number is not armstrong ");
+	}
+	
+	
+}
+
+private static boolean _9_isarmstrong(int input) {
+	
+	/* find armstrong or not */
+	
+	int sum = 0;
+	int digit = 0;
+	int numberOfDigits = _9_countNumDigits(input);
+	System.out.println("number of digits " +numberOfDigits);
+	int j=input;
+	while(j > 0) {
+		digit = j % 10;
+		j = j/10;
+		sum = sum + (int)Math.pow(digit, numberOfDigits);
+	}
+	return sum==input;
+}
+
+private static int _9_countNumDigits(int input) {
+	
+	/* count len of int */
+	int count =0;
+	int j=input;
+	while(j > 0) {
+		
+		j = j/10;
+		count++;
+	}
+	return count;
+}
+
+private static void stream_8() {
+	
+	/* groupBy all employees names by city  */
+	Employee e1 = new Employee("a", 23, 10000,"hyd","cse","male");
+	Employee e2 = new Employee("b", 25, 50000,"hyd","cse","male");
+	Employee e3 = new Employee("c", 27, 30000,"ban","it","male");
+	Employee e4 = new Employee("d", 29, 40000,"ban","it","male");
+	
+	List<Employee> employees = new ArrayList<>();
+	employees.add(e4);
+	employees.add(e3);
+	employees.add(e2);
+	employees.add(e1);
+	
+	System.out.println(employees);
+	Map<String,List<Employee>> groupedCity = employees.stream().collect(Collectors.groupingBy(Employee::getCity));
+	
+	System.out.println(groupedCity);
+}
+
+private static void streams_6() {
+	
+	/* retrieve hashmap values in a sorted order 
+	 we use linkedhashmap to get in an order
+	 because hashmap does not follow order
+	 */
+	
+	Map<String,Integer> map = new HashMap<>();
+	map.put("d", 1);
+	map.put("a", 1);
+	map.put("b", 2);
+	
+	System.out.println("before sorting");
+	System.out.println(map);
+	LinkedHashMap<String,Integer> linkedHashMap = map.entrySet().stream().sorted((e1,e2) -> {
+		return e1.getValue() - e2.getValue();
+		}).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) ->{ System.out.println(e1); return e1;} , LinkedHashMap::new));
+	System.out.println(linkedHashMap);
+
+}
+
+private static void streams_5_2() {
+	/* string comparision */
+	String s1 = "ABC";
+	String s2 = "ABC";
+	String s3 = new String("aBC");
+	
+	System.out.println(s1==s2);
+	System.out.println(s2==s3);
+	System.out.println(s2.equals(s3));
+	
+	System.out.println(s2.equalsIgnoreCase(s3));
+}
+
+private static void streams_5_1() {
+	/* increse emp sal by 10% by condition */
+	List<Employee> employees = new ArrayList<Employee>();
+	employees.add(new Employee("a",24,10000,"hyd","it","male"));
+	employees.add(new Employee("b",26,20000,"hyd","it","male"));
+	employees.add(new Employee("c",27,30000,"hyd","cse","male"));
+	employees.add(new Employee("d",28,40000,"hyd","cse","male"));
+	employees.add(new Employee("e",29,45000,"hyd","it","male"));
+	
+	System.out.println("before increase 10%: "+employees);
+	
+	List<Employee> incrementedEmployees = employees.stream().map((e) -> {
+		if(e.getAge()>25) 
+		{e.setSalary(e.getSalary()+e.getSalary()*0.1);} 
+	return e;}
+	).collect(Collectors.toList());
+	
+	System.out.println("After increase 10%: "+incrementedEmployees);
+}
+ 
+}
+class Employee{
+	
+	public Employee(String name, int age, double salary, String city, String dept,String gender) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+		this.city = city;
+		this.dept = dept;
+		this.gender=gender;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", age=" + age + ", salary=" + salary + ", city=" + city + ", dept=" + dept
+				+ ", gender=" + gender + "]";
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	private String name;
+	private int age;
+	private double salary;
+	private String city;
+	private String dept;
+	private String gender;
+	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	
+}
